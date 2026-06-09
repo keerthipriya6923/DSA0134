@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+class Event {
+private:
+    string eventName, participantName;
+    int registrationID;
+
+public:
+    static int totalParticipants;
+
+    void registerParticipant() {
+        cout << "Event Name: ";
+        cin >> eventName;
+
+        cout << "Participant Name: ";
+        cin >> participantName;
+
+        cout << "Registration ID: ";
+        cin >> registrationID;
+
+        totalParticipants++;
+    }
+
+    void display() {
+        cout << "\nEvent: " << eventName
+             << "\nParticipant: " << participantName
+             << "\nRegistration ID: " << registrationID << endl;
+    }
+};
+
+int Event::totalParticipants = 0;
+
+int main() {
+    int n;
+    cout << "Enter number of participants: ";
+    cin >> n;
+
+    Event e[100];
+
+    for (int i = 0; i < n; i++)
+        e[i].registerParticipant();
+
+    for (int i = 0; i < n; i++)
+        e[i].display();
+
+    cout << "\nTotal Participants: " << Event::totalParticipants;
+    return 0;
+}
